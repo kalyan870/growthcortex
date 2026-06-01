@@ -5,9 +5,9 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "GrowthCortex - AI Startup Growth Copilot",
+  title: "GrowthCortex — AI Growth Copilot for Startups",
   description:
-    "Your 24/7 AI growth strategist. Analyze, strategize, and grow your startup with AI-powered insights, content generation, and growth experiments.",
+    "Your AI operating system for startup growth. Analyze, strategize, and scale with AI-powered competitor intelligence, content generation, and growth experiments.",
 };
 
 export default function RootLayout({

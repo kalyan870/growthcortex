@@ -15,6 +15,7 @@ import {
   Lightbulb,
   LogOut,
   ChevronRight,
+  FlaskConical,
 } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
@@ -22,9 +23,11 @@ import { Avatar, AvatarFallback } from "@/components/ui/avatar"
 
 const sidebarLinks = [
   { href: "/dashboard", label: "Dashboard", icon: LayoutDashboard },
-  { href: "/competitors", label: "Competitors", icon: Search },
+  { href: "/competitors", label: "Competitor Intel", icon: Search },
   { href: "/content", label: "Content Studio", icon: FileText },
-  { href: "/analytics", label: "Analytics", icon: BarChart3 },
+  { href: "/growth", label: "Growth Experiments", icon: FlaskConical },
+  { href: "/analytics", label: "Analytics AI", icon: BarChart3 },
+  { href: "/settings", label: "Settings", icon: Settings },
 ]
 
 export default function DashboardLayout({ children }: { children: React.ReactNode }) {
@@ -33,7 +36,6 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
 
   return (
     <div className="flex min-h-screen bg-background">
-      {/* Mobile sidebar overlay */}
       {sidebarOpen && (
         <div
           className="fixed inset-0 z-40 bg-black/50 lg:hidden"
@@ -41,7 +43,6 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
         />
       )}
 
-      {/* Sidebar */}
       <aside
         className={cn(
           "fixed inset-y-0 left-0 z-50 flex w-64 flex-col border-r bg-card transition-transform lg:static lg:translate-x-0",
@@ -58,7 +59,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
           </button>
         </div>
 
-        <nav className="flex-1 space-y-1 p-4">
+        <div className="flex-1 space-y-1 overflow-y-auto p-4">
           {sidebarLinks.map((link) => {
             const Icon = link.icon
             const isActive = pathname === link.href
@@ -80,22 +81,21 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
               </Link>
             )
           })}
-        </nav>
+        </div>
 
         <div className="border-t p-4">
           <div className="flex items-center gap-3">
             <Avatar className="h-8 w-8">
-              <AvatarFallback>U</AvatarFallback>
+              <AvatarFallback>SF</AvatarFallback>
             </Avatar>
             <div className="flex-1 text-sm">
-              <p className="font-medium">Founder</p>
-              <p className="text-xs text-muted-foreground">Startup Plan</p>
+              <p className="font-medium">Solo Founder</p>
+              <p className="text-xs text-muted-foreground">Growth Plan</p>
             </div>
           </div>
         </div>
       </aside>
 
-      {/* Main content */}
       <div className="flex flex-1 flex-col">
         <header className="flex h-16 items-center gap-4 border-b bg-card px-6">
           <button className="lg:hidden" onClick={() => setSidebarOpen(true)}>
