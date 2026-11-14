@@ -5,15 +5,16 @@ from api.competitors import router as competitors_router
 from api.content import router as content_router
 from api.growth import router as growth_router
 from api.analytics import router as analytics_router
+from settings import cors_origins
 
 app = FastAPI(title="GrowthCortex API", version="1.0.0")
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
+    allow_origins=cors_origins(),
+    allow_credentials=False,
+    allow_methods=["GET", "POST"],
+    allow_headers=["Content-Type"],
 )
 
 app.include_router(analyze_router, prefix="/api/analyze", tags=["analyze"])
