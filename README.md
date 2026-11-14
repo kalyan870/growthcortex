@@ -2,11 +2,13 @@
 
 <p align="center"><strong>An AI startup growth copilot for turning a company idea into a structured set of growth questions, experiments, and analytics.</strong></p>
 
-<p align="center"><a href="https://github.com/kalyan870/growthcortex">Source repository</a> · Next.js 14 · FastAPI · OpenAI</p>
+<p align="center"><a href="https://github.com/kalyan870/growthcortex">Source repository</a> · Next.js 16 · React 19 · FastAPI · OpenAI</p>
 
 ## Project overview
 
 GrowthCortex combines a Next.js workspace with a Python FastAPI service. The UI organizes startup analysis into dashboard, growth, competitor, content, analytics, and settings areas. Next.js route handlers proxy selected requests to the Python API; the Python backend contains the agent modules and analysis endpoints.
+
+**Frontend demo:** [startup-growth-copilot.vercel.app](https://startup-growth-copilot.vercel.app/). The UI route is live; generated results depend on the API being configured and reachable.
 
 ## Capabilities in this repository
 
@@ -41,7 +43,9 @@ Keep the OpenAI key on the server. Do not use a real key in a `NEXT_PUBLIC_` var
 
 ## Deployment
 
-The Next.js app and FastAPI service are separate deployables. Set `BACKEND_URL` for Next.js server routes and `NEXT_PUBLIC_API_URL` for browser-side requests to a reachable backend URL. The repository includes Vercel configuration, but deploying the UI alone does not deploy the Python service.
+The Next.js app and FastAPI service are separate deployables. Set `BACKEND_URL` for Next.js server routes and `NEXT_PUBLIC_API_URL` for browser-side requests to a reachable backend URL. Set `CORS_ORIGINS` on the API as a comma-separated list of trusted browser origins. The repository includes Vercel configuration, but deploying the UI alone does not deploy the Python service. CORS is a browser policy, not authentication; the API currently has no user authentication or per-account quota.
+
+Request models limit text sizes, accepted content platforms, and the number and type of analytics metrics to reduce accidental oversized or malformed requests.
 
 ## Project structure
 
@@ -54,7 +58,7 @@ If the API is unreachable, the frontend API client falls back to sample response
 
 ## Current scope
 
-This repository is an AI-assisted planning prototype. Generated analysis should be reviewed before using it to make business or investment decisions. It does not include a durable production database or a verified public demo link.
+This repository is an AI-assisted planning prototype. Generated analysis should be reviewed before using it to make business or investment decisions. It does not include a durable production database.
 
 
 
